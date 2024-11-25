@@ -1,0 +1,38 @@
+# Rails default
+/.bundle
+/log/*
+!/log/.keep
+/tmp
+/storage/*
+!/storage/.keep
+/public/assets
+/public/packs
+/public/packs-test
+/public/system
+/public/uploads
+/config/master.key
+/config/credentials/*.key
+.env
+.env.*
+
+# Editor and OS-specific
+.DS_Store
+.vscode/
+*.swp
+*~
+
+# Node.js and Yarn
+/node_modules
+/yarn-error.log
+
+# SQLite
+/db/*.sqlite3
+/db/*.sqlite3-journal
+
+# Test coverage
+/coverage
+
+# Temporary files
+*.rbc
+*.pid
+/config/local_env.yml

@@ -1,0 +1,30 @@
+# == Schema Information
+#
+# Table name: mines_board_templates
+#
+#  id             :integer          not null, primary key
+#  name           :string
+#  name_slug      :string
+#  email_address  :string
+#  width          :integer
+#  height         :integer
+#  mines_quantity :integer
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#
+
+one:
+  name: MyString
+  name_slug: MyString
+  email_address: MyString
+  width: 1
+  height: 1
+  mines_quantity: 1
+
+two:
+  name: MyString
+  name_slug: MyString
+  email_address: MyString
+  width: 1
+  height: 1
+  mines_quantity: 1

@@ -1,0 +1,77 @@
+
+<div class="container">
+  <% if @mines_boards.blank? %>
+  <div class="row justify-content-center align-items-center text-center">
+    <h2>No board games found. Just create a new one!</h2>
+  </div>
+  <% else %>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Sequence</th>
+          <th scope="col">Board Name</th>
+          <th scope="col">Creator</th>
+          <th scope="col">Date created</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @mines_boards.each_with_index do |mines_board, index| %>
+          <tr>
+            <th scope="row"><%= index + 1 %></th>
+            <td><%= link_to mines_board.name, mines_board_path(mines_board.name_slug) %></td>
+            <td><%= mines_board.email_address %></td>
+            <td><%= mines_board.created_at.strftime('%d/%m/%Y') %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
+
+  <h1 class="text-center">Create a New Prompt</h1>
+
+  <div class="row justify-content-center align-items-center">
+    <div class="col-md-4">
+      <%= form_with model: @mines_board, local: true do |f| %>
+        <% if @mines_board.errors.any? %>
+          <div id="error_explanation" class="alert alert-danger">
+            <h2><%= pluralize(@mines_board.errors.count, "error") %> prohibited this prompt from being saved:</h2>
+            <ul>
+              <% @mines_board.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+        <div class="form-group mb-3">
+          <%= f.label :email_address %>
+          <%= f.text_field :email_address, type: "email", class: "form-control", value: 'tainx@solazu.com' %>
+        </div>
+
+        <div class="form-group mb-3">
+          <%= f.label :name %>
+          <%= f.text_field :name, class: "form-control", value: 'Tai Nguyen' %>
+        </div>
+
+        <div class="form-group mb-3">
+          <%= f.label :width %>
+          <%= f.text_field :width, class: "form-control", value: 5 %>
+        </div>
+
+        <div class="form-group mb-3">
+          <%= f.label :height %>
+          <%= f.text_field :height, class: "form-control", value: 6 %>
+        </div>
+
+        <div class="form-group mb-3">
+          <%= f.label :mines_quantity %>
+          <%= f.text_field :mines_quantity, class: "form-control", value: 2 %>
+        </div>
+
+        <div class="form-actions">
+          <%= f.submit "Create mines board", class: "btn btn-primary w-100" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

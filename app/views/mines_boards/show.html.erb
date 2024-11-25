@@ -1,0 +1,39 @@
+  <style>
+    .matrix-cell {
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid #dee2e6;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+    .matrix-row {
+      display: flex;
+      justify-content: center;
+    }
+    .matrix-icon {
+      width: 40px; /* Fixed icon width */
+      height: 40px; /* Fixed icon height */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  </style>
+<div class="container mt-5 text-center">
+  <%= link_to "Home", mines_boards_path, class: 'btn btn-primary' %>
+  <h2>Bomb Matrix</h2>
+  <h3>Created by: <%= @mines_board.email_address   %></h3>
+  <div id="matrix-display">
+    <!-- Example Matrix -->
+    <% @mines_board.matrix.each do |_, value| %>
+      <div class="matrix-row">
+      <% value.each do |risk| %>
+        <% html_class, html_text = risk.zero? ? ['bg-danger text-white', 'X'] : ['bg-success text-white', 'V'] %>
+        <div class="matrix-icon matrix-cell <%= html_class %>"><%= html_text %></div>
+      <% end %>
+      </div>
+    <%end %>
+  </div>
+</div>
