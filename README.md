@@ -10,6 +10,7 @@ $ cd minesweeper
 $ bundle install
 $ rake db:create
 $ rake db:migrate
+$ yarn install
 $ rails webpacker:install
 $ rails webpacker:compile
 $ rails s
